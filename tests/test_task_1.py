@@ -73,7 +73,7 @@ def test_add_mark(teachers):
 
 def test_remove_mark(teachers):
     """
-    Функция тестирует метод remove_mark удаление оценки..
+    Функция тестирует метод remove_mark удаление оценки.
     """
     teacher1, teacher2 = teachers
     result = teacher2.remove_mark("Анна", 4)
