@@ -1,6 +1,7 @@
 import pytest
 from task_1 import Teacher, DisciplineTeacher
 
+
 @pytest.fixture
 def teachers():
     """
@@ -11,14 +12,16 @@ def teachers():
                                  discipline="Информатика", job_title="Преподаватель")
     return teacher1, teacher2
 
+
 def test_teacher_initialization(teachers):
     """
-     Функция тестирует инициализации объекта Teacher.
+    Функция тестирует инициализации объекта Teacher.
     """
     teacher1, teacher2 = teachers
     assert teacher1.name == "Иван Иванов"
     assert teacher1.education == "БГПУ"
     assert teacher1.experience == 4
+
 
 def test_discipline_teacher_initialization(teachers):
     """
@@ -31,6 +34,7 @@ def test_discipline_teacher_initialization(teachers):
     assert teacher2.discipline == "Информатика"
     assert teacher2.job_title == "Преподаватель"
 
+
 def test_experience_setter(teachers):
     """
     Функция тестирует значение опыта работы.
@@ -40,6 +44,7 @@ def test_experience_setter(teachers):
     assert teacher1.experience == 5
     with pytest.raises(ValueError):
         teacher1.experience = -1
+
 
 def test_get_teacher_data(teachers):
     """
@@ -56,6 +61,7 @@ def test_get_teacher_data(teachers):
     assert "Информатика" in discipline_teacher_data
     assert "Преподаватель" in discipline_teacher_data
 
+
 def test_add_mark(teachers):
     """
     Функция тестирует метод add_mark добавление оценки.
@@ -63,6 +69,7 @@ def test_add_mark(teachers):
     teacher1, teacher2 = teachers
     result = teacher2.add_mark("Анна", 5)
     assert result == "Преподаватель Сергей Сергеев по предмету Информатика поставил оценку 5 студенту Анна"
+
 
 def test_remove_mark(teachers):
     """
@@ -72,6 +79,7 @@ def test_remove_mark(teachers):
     result = teacher2.remove_mark("Анна", 4)
     assert result == "Преподаватель Сергей Сергеев по предмету Информатика удалил оценку 4 студенту Анна"
 
+
 def test_give_a_consultation(teachers):
     """
     Функция тестирует метод give_a_consultation о проведенной консультации преподавателем.
@@ -79,6 +87,7 @@ def test_give_a_consultation(teachers):
     teacher1, teacher2 = teachers
     result = teacher2.give_a_consultation("10А")
     assert result == "Преподаватель Сергей Сергеев провел консультацию по предмету Информатика в 10А классе"
+
 
 def test_dismiss_teacher(teachers):
     """
@@ -93,6 +102,7 @@ def test_dismiss_teacher(teachers):
 
     result = Teacher.dismiss_teacher("Иван Иванов")
     assert result == "Учитель с именем Иван Иванов не найден."
+
 
 def test_job_title_setter(teachers):
     """
